@@ -1,0 +1,1878 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aqsa Sewa - Penyewaan Alat Camping</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
+    <style>
+        :root {
+            --primary-color: #0f766e;
+            --secondary-color: #14b8a6;
+            --accent-color: #fbbf24;
+            --dark-color: #0f172a;
+            --light-color: #f8fafc;
+            --text-color: #334155;
+            --border-radius: 12px;
+            --box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: var(--light-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Scrollbar Styling */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--secondary-color);
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--primary-color);
+        }
+
+        /* Header & Navigation */
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transition: var(--transition);
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-icon {
+            font-size: 1.8rem;
+            color: var(--accent-color);
+        }
+
+        .logo h1 {
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+
+        .logo span {
+            color: var(--accent-color);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.1rem;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--accent-color);
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        nav a:hover {
+            color: var(--accent-color);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(15, 118, 110, 0.85), rgba(15, 118, 110, 0.85)), 
+                        url('https://images.unsplash.com/photo-1504851149312-7a075b496cc7?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 7rem 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 20% 80%, rgba(251, 191, 36, 0.2) 0%, transparent 50%);
+            z-index: 1;
+        }
+
+        .hero .container {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h2 {
+            font-size: 3.2rem;
+            margin-bottom: 1.5rem;
+            color: white;
+            font-weight: 700;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            max-width: 700px;
+            margin: 0 auto 2.5rem;
+            opacity: 0.95;
+        }
+
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 2.5rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background-color: var(--accent-color);
+            color: var(--primary-color);
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(251, 191, 36, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.2);
+            transition: left 0.5s ease;
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(251, 191, 36, 0.4);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: white;
+            border: 2px solid white;
+            box-shadow: none;
+        }
+
+        .btn-secondary:hover {
+            background-color: white;
+            color: var(--primary-color);
+        }
+
+        /* Section Title */
+        .section-title {
+            text-align: center;
+            margin: 4rem 0 2.5rem;
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--accent-color);
+            border-radius: 2px;
+        }
+
+        /* Tabs */
+        .tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 3rem;
+            background-color: white;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--box-shadow);
+        }
+
+        .tab {
+            padding: 1rem 2rem;
+            background: none;
+            border: none;
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: var(--text-color);
+            cursor: pointer;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .tab::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background-color: var(--accent-color);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .tab.active {
+            color: var(--primary-color);
+            background-color: rgba(15, 118, 110, 0.05);
+        }
+
+        .tab.active::after {
+            transform: scaleX(1);
+        }
+
+        .tab:hover {
+            color: var(--primary-color);
+            background-color: rgba(15, 118, 110, 0.05);
+        }
+
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Products Grid */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2.5rem;
+            margin-bottom: 5rem;
+        }
+
+        /* Product Card */
+        .product-card {
+            background-color: white;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .product-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .product-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--box-shadow);
+        }
+
+        .product-img {
+            height: 220px;
+            width: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .product-card:hover .product-img {
+            transform: scale(1.05);
+        }
+
+        .product-info {
+            padding: 1.8rem;
+        }
+
+        .product-name {
+            font-size: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: var(--dark-color);
+            font-weight: 600;
+        }
+
+        .product-price {
+            font-size: 1.3rem;
+            color: var(--secondary-color);
+            font-weight: 700;
+            margin-bottom: 1.2rem;
+        }
+
+        .product-price span {
+            font-size: 0.9rem;
+            color: #94a3b8;
+            font-weight: normal;
+        }
+
+        .product-desc {
+            color: #64748b;
+            margin-bottom: 1.8rem;
+            font-size: 1rem;
+        }
+
+        .product-actions {
+            display: flex;
+            justify-content: space-between;
+            gap: 1rem;
+        }
+
+        .btn-small {
+            padding: 0.7rem 1.5rem;
+            font-size: 0.95rem;
+            border-radius: 50px;
+        }
+
+        /* Package Cards */
+        .package-card {
+            background-color: white;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .package-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+        }
+
+        .package-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .package-header {
+            background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .package-name {
+            font-size: 1.7rem;
+            margin-bottom: 0.5rem;
+            color: white;
+            font-weight: 700;
+        }
+
+        .package-subtitle {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .package-content {
+            padding: 2rem;
+        }
+
+        .package-items {
+            margin-bottom: 2rem;
+        }
+
+        .package-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.8rem 0;
+            border-bottom: 1px dashed #e2e8f0;
+        }
+
+        .package-price {
+            text-align: center;
+            padding: 1.5rem;
+            background-color: #f1f5f9;
+            border-radius: var(--border-radius);
+            margin-top: 1.5rem;
+        }
+
+        .original-price {
+            text-decoration: line-through;
+            color: #94a3b8;
+            font-size: 1rem;
+        }
+
+        .discount-price {
+            font-size: 1.7rem;
+            color: var(--secondary-color);
+            font-weight: 700;
+            margin-top: 0.5rem;
+        }
+
+        .discount-badge {
+            background-color: var(--accent-color);
+            color: var(--dark-color);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            display: inline-block;
+            margin-left: 0.5rem;
+        }
+
+        /* About Section */
+        .about-section {
+            background-color: white;
+            padding: 5rem 0;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-img {
+            width: 100%;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+        }
+
+        .about-text h3 {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+        }
+
+        .about-text p {
+            margin-bottom: 1.5rem;
+            color: var(--text-color);
+            font-size: 1.05rem;
+        }
+
+        /* Terms Section */
+        .terms-section {
+            padding: 5rem 0;
+            background-color: #f8fafc;
+        }
+
+        .terms-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .terms-card {
+            background-color: white;
+            padding: 2.5rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+        }
+
+        .terms-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .terms-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .terms-card h3 i {
+            color: var(--accent-color);
+        }
+
+        .terms-list {
+            list-style-type: none;
+        }
+
+        .terms-list li {
+            margin-bottom: 1.2rem;
+            padding-left: 1.5rem;
+            position: relative;
+            color: var(--text-color);
+        }
+
+        .terms-list li:before {
+            content: "•";
+            color: var(--secondary-color);
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+            font-size: 1.2rem;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            padding: 5rem 0;
+            background-color: white;
+        }
+
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+        }
+
+        .contact-info {
+            background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 3rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+        }
+
+        .contact-info h3 {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            color: white;
+        }
+
+        .contact-details {
+            margin-bottom: 2.5rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-icon {
+            font-size: 1.3rem;
+            color: var(--accent-color);
+            margin-right: 1.2rem;
+            width: 30px;
+        }
+
+        .contact-form {
+            background-color: #f8fafc;
+            padding: 3rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+        }
+
+        .contact-form h3 {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 2rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.8rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.8rem;
+            font-weight: 500;
+            color: var(--dark-color);
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 1rem 1.2rem;
+            border: 1px solid #e2e8f0;
+            border-radius: var(--border-radius);
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--secondary-color);
+            box-shadow: 0 0 0 3px rgba(20, 184, 166, 0.1);
+        }
+
+        .checkout-items {
+            background-color: white;
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            margin-bottom: 2rem;
+            max-height: 300px;
+            overflow-y: auto;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .checkout-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 1rem 0;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .checkout-total {
+            display: flex;
+            justify-content: space-between;
+            font-weight: 600;
+            font-size: 1.3rem;
+            padding: 1.5rem 0;
+            color: var(--primary-color);
+            border-top: 2px solid #e2e8f0;
+            margin-top: 1rem;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 4rem 0 2rem;
+            text-align: center;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin-bottom: 3rem;
+        }
+
+        .footer-section {
+            flex: 1;
+            min-width: 250px;
+            margin-bottom: 2rem;
+            padding: 0 1rem;
+        }
+
+        .footer-section h4 {
+            font-size: 1.4rem;
+            margin-bottom: 1.5rem;
+            color: var(--accent-color);
+            position: relative;
+            display: inline-block;
+        }
+
+        .footer-section h4::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background-color: var(--accent-color);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 1.5rem;
+        }
+
+        .social-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: white;
+            border-radius: 50%;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .social-link:hover {
+            background-color: var(--accent-color);
+            color: var(--dark-color);
+            transform: translateY(-5px);
+        }
+
+        .copyright {
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.95rem;
+            color: #94a3b8;
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background-color: white;
+            width: 90%;
+            max-width: 600px;
+            border-radius: var(--border-radius);
+            padding: 2.5rem;
+            position: relative;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 2rem;
+            color: #94a3b8;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .close-modal:hover {
+            color: var(--primary-color);
+        }
+
+        .modal-title {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .about-content, .contact-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero h2 {
+                font-size: 2.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: var(--primary-color);
+                flex-direction: column;
+                padding: 1rem 0;
+                text-align: center;
+                box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+            }
+            
+            nav ul.active {
+                display: flex;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn {
+                width: 80%;
+                text-align: center;
+            }
+            
+            .footer-content {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .footer-section {
+                text-align: center;
+            }
+            
+            .tabs {
+                flex-wrap: wrap;
+            }
+            
+            .tab {
+                flex: 1;
+                min-width: 120px;
+                text-align: center;
+            }
+            
+            .hero {
+                padding: 5rem 0;
+            }
+            
+            .hero h2 {
+                font-size: 2.2rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header & Navigation -->
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <i class="fas fa-campground logo-icon"></i>
+                <h1>Aqsa <span>Sewa</span></h1>
+            </div>
+            
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <nav>
+                <ul id="navMenu">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#produk">Produk</a></li>
+                    <li><a href="#paket">Paket</a></li>
+                    <li><a href="#syarat">Syarat</a></li>
+                    <li><a href="#kontak">Kontak & Checkout</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <h2 data-aos="fade-up">Penyewaan Alat Camping "Aqsa Sewa"</h2>
+            <p data-aos="fade-up" data-aos-delay="200">Temukan perlengkapan camping terbaik untuk petualangan Anda. Dengan peralatan berkualitas dan harga terjangkau, kami siap mendukung setiap perjalanan outdoor Anda.</p>
+            <div class="cta-buttons" data-aos="fade-up" data-aos-delay="400">
+                <a href="https://wa.me/6282193588289?text=Halo%20Aqsa%20Sewa,%20saya%20ingin%20menanyakan%20ketersediaan%20alat%20camping" class="btn" target="_blank">Pesan via WhatsApp</a>
+                <a href="#produk" class="btn btn-secondary">Lihat Produk</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section id="produk" class="container">
+        <h2 class="section-title" data-aos="fade-up">Produk Penyewaan Peralatan</h2>
+        
+        <div class="tabs" data-aos="fade-up" data-aos-delay="100">
+            <button class="tab active" data-tab="peralatan">Peralatan Individu</button>
+            <button class="tab" data-tab="tenda">Tenda</button>
+            <button class="tab" data-tab="kursi-meja">Kursi & Meja</button>
+        </div>
+        
+        <div class="tab-content active" id="peralatan">
+            <div class="products-grid" id="productsGrid">
+                <!-- Products will be loaded by JavaScript -->
+            </div>
+        </div>
+        
+        <div class="tab-content" id="tenda">
+            <div class="products-grid" id="tendaGrid">
+                <!-- Tenda products will be loaded by JavaScript -->
+            </div>
+        </div>
+        
+        <div class="tab-content" id="kursi-meja">
+            <div class="products-grid" id="furnitureGrid">
+                <!-- Furniture products will be loaded by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Packages Section -->
+    <section id="paket" class="about-section">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Paket Hemat Camping</h2>
+            <p style="text-align: center; margin-bottom: 3rem; max-width: 800px; margin-left: auto; margin-right: auto;" data-aos="fade-up" data-aos-delay="100">Pilih paket hemat yang sudah kami rancang khusus untuk kebutuhan camping Anda. Harga paket lebih murah dibandingkan menyewa peralatan secara terpisah!</p>
+            
+            <div class="products-grid">
+                <!-- Paket 1: Pendaki Hemat -->
+                <div class="package-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="package-header">
+                        <h3 class="package-name">Paket "Pendaki Hemat"</h3>
+                        <p class="package-subtitle">Cocok untuk pasangan atau budget terbatas (2 Orang)</p>
+                    </div>
+                    <div class="package-content">
+                        <div class="package-items">
+                            <div class="package-item">
+                                <span>1 Tenda Kapasitas 2-3 Orang</span>
+                                <span>Rp 25.000</span>
+                            </div>
+                            <div class="package-item">
+                                <span>2 Matras Aluminium</span>
+                                <span>Rp 16.000</span>
+                            </div>
+                            <div class="package-item">
+                                <span>1 Kompor Portable</span>
+                                <span>Rp 13.000</span>
+                            </div>
+                            <div class="package-item">
+                                <span>1 Nesting (Alat Masak)</span>
+                                <span>Rp 18.000</span>
+                            </div>
+                        </div>
+                        <div class="package-price">
+                            <div class="original-price">Harga Satuan: Rp 72.000</div>
+                            <div class="discount-price">Paket: Rp 59.000 <span class="discount-badge">Hemat Rp 13.000</span></div>
+                        </div>
+                        <button class="btn" style="width: 100%; margin-top: 1.5rem;" onclick="addPackageToCart('pendaki-hemat')">Pilih Paket Ini</button>
+                    </div>
+                </div>
+                
+                <!-- Paket 2: Ceria Berempat -->
+                <div class="package-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="package-header">
+                        <h3 class="package-name">Paket "Ceria Berempat"</h3>
+                        <p class="package-subtitle">Pilihan populer untuk grup (3-4 Orang)</p>
+                    </div>
+                    <div class="package-content">
+                        <div class="package-items">
+                            <div class="package-item">
+                                <span>1 Tenda Kapasitas 3-4 Orang</span>
+                                <span>Rp 30.000</span>
+                            </div>
+                            <div class="package-item">
+                                <span>4 Matras Aluminium</span>
+                                <span>Rp 32.000</span>
+                            </div>
+                            <div class="package-item">
+                                <span>1 Flysheet (Peneduh Luar)</span>
+                                <span>Rp 10.000</span>
+                            </div>
+                            <div class="package-item">
+                                <span>1 Kompor Portable</span>
+                                <span>Rp 13.000</span>
+                            </div>
+                            <div class="package-item">
+                                <span>1 Nesting (Alat Masak)</span>
+                                <span>Rp 18.000</span>
+                            </div>
+                            <div class="package-item">
+                                <span>1 Gas (Bahan Bakar)</span>
+                                <span>Rp 20.000</span>
+                            </div>
+                        </div>
+                        <div class="package-price">
+                            <div class="original-price">Harga Satuan: Rp 123.000</div>
+                            <div class="discount-price">Paket: Rp 105.000 <span class="discount-badge">Hemat Rp 18.000</span></div>
+                        </div>
+                        <button class="btn" style="width: 100%; margin-top: 1.5rem;" onclick="addPackageToCart('ceria-berempat')">Pilih Paket Ini</button>
+                    </div>
+                </div>
+                
+                <!-- Paket 3: Glamping Chill -->
+                <div class="package-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="package-header">
+                        <h3 class="package-name">Paket "Glamping Chill"</h3>
+                        <p class="package-subtitle">Ekstra nyaman untuk nongkrong & dokumentasi</p>
+                    </div>
+                    <div class="package-content">
+                        <div class="package-items">
+                            <div class="package-item">
+                                <span>1 Tenda Kapasitas 3-4 Orang</span>
+                                <span>Rp 30.000</span>
+                            </div>
+                            <div class="package-item">
+                                <span>2 Kursi Lipat XXL</span>
+                                <span>Rp 20.000</span>
+                            </div>
+                            <div class="package-item">
+                                <span>1 Meja Lipat</span>
+                                <span>Rp 10.000</span>
+                            </div>
+                            <div class="package-item">
+                                <span>1 Hammock</span>
+                                <span>Rp 8.000</span>
+                            </div>
+                            <div class="package-item">
+                                <span>1 Tripod (Untuk konten)</span>
+                                <span>Rp 10.000</span>
+                            </div>
+                            <div class="package-item">
+                                <span>1 Flysheet</span>
+                                <span>Rp 10.000</span>
+                            </div>
+                        </div>
+                        <div class="package-price">
+                            <div class="original-price">Harga Satuan: Rp 88.000</div>
+                            <div class="discount-price">Paket: Rp 75.000 <span class="discount-badge">Hemat Rp 13.000</span></div>
+                        </div>
+                        <button class="btn" style="width: 100%; margin-top: 1.5rem;" onclick="addPackageToCart('glamping-chill')">Pilih Paket Ini</button>
+                    </div>
+                </div>
+                
+                <!-- Paket 4: Konten Kreator -->
+                <div class="package-card" data-aos="fade-up" data-aos-delay="500">
+                    <div class="package-header">
+                        <h3 class="package-name">Paket "Konten Kreator"</h3>
+                        <p class="package-subtitle">Khusus untuk foto/video maksimal</p>
+                    </div>
+                    <div class="package-content">
+                        <div class="package-items">
+                            <div class="package-item">
+                                <span>1 Apexel (Lensa Tele/Makro)</span>
+                                <span>Rp 12.000</span>
+                            </div>
+                            <div class="package-item">
+                                <span>1 Tripod</span>
+                                <span>Rp 10.000</span>
+                            </div>
+                            <div class="package-item">
+                                <span>1 Hammock</span>
+                                <span>Rp 8.000</span>
+                            </div>
+                            <div class="package-item">
+                                <span>1 Kursi Lipat XL</span>
+                                <span>Rp 8.000</span>
+                            </div>
+                        </div>
+                        <div class="package-price">
+                            <div class="original-price">Harga Satuan: Rp 38.000</div>
+                            <div class="discount-price">Paket: Rp 30.000 <span class="discount-badge">Hemat Rp 8.000</span></div>
+                        </div>
+                        <button class="btn" style="width: 100%; margin-top: 1.5rem;" onclick="addPackageToCart('konten-kreator')">Pilih Paket Ini</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Terms & Conditions Section -->
+    <section id="syarat" class="terms-section">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Syarat & Ketentuan Penyewaan</h2>
+            
+            <div class="terms-content">
+                <div class="terms-card" data-aos="fade-up" data-aos-delay="100">
+                    <h3><i class="fas fa-id-card"></i> Syarat Administrasi & Jaminan</h3>
+                    <ul class="terms-list">
+                        <li>Wajib meninggalkan kartu identitas asli (E-KTP, SIM, atau Paspor) yang masih berlaku.</li>
+                        <li>Nama pada identitas harus sama dengan orang yang mengambil barang.</li>
+                        <li>Uang Muka (DP) biasanya dikenakan sebesar 25% - 50% saat booking untuk mengamankan stok.</li>
+                        <li>Pembayaran wajib dilunasi saat pengambilan alat.</li>
+                    </ul>
+                </div>
+                
+                <div class="terms-card" data-aos="fade-up" data-aos-delay="200">
+                    <h3><i class="fas fa-ban"></i> Tata Tertib Penggunaan</h3>
+                    <ul class="terms-list">
+                        <li>Dilarang memasak atau merokok di dalam tenda (risiko tenda berlubang atau terbakar).</li>
+                        <li>Dilarang mencuci alat sendiri karena teknik pencucian yang salah bisa merusak lapisan waterproof.</li>
+                        <li>Alat sebaiknya dikembalikan dalam kondisi kering untuk mencegah jamur.</li>
+                        <li>Jika dikembalikan basah, dikenakan biaya tambahan (cleaning/drying fee).</li>
+                    </ul>
+                </div>
+                
+                <div class="terms-card" data-aos="fade-up" data-aos-delay="300">
+                    <h3><i class="fas fa-exclamation-triangle"></i> Sanksi & Denda</h3>
+                    <ul class="terms-list">
+                        <li>Kerusakan ringan dikenakan denda sesuai daftar harga komponen yang rusak.</li>
+                        <li>Kerusakan berat/hilang wajib mengganti unit baru atau membayar seharga barang.</li>
+                        <li>Keterlambatan pengembalian dikenakan biaya sewa tambahan secara proporsional.</li>
+                        <li>Penyewa bertanggung jawab penuh atas alat yang disewa selama masa pemakaian.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact & Checkout Section -->
+    <section id="kontak" class="contact-section">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Kontak & Lokasi</h2>
+            <div class="contact-content">
+                <div class="contact-info" data-aos="fade-right">
+                    <h3>Pesan Sekarang</h3>
+                    <p>Silakan hubungi Aqsa Sewa untuk pemesanan, info stok, atau konsultasi kebutuhan camping Anda.</p>
+                    
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <i class="fab fa-whatsapp contact-icon"></i>
+                            <div>
+                                <strong>WhatsApp:</strong><br>
+                                <a href="https://wa.me/6282193588289" style="color: var(--accent-color);">0821-9358-8289</a>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt contact-icon"></i>
+                            <div>
+                                <strong>Alamat:</strong><br>
+                                Baranti, Passeno<br>
+                                Jl. Poros Pinrang Rappang<br>
+                                Depan Pasar Baranti
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-phone contact-icon"></i>
+                            <div>
+                                <strong>Telepon / WA:</strong><br>
+                                0821-9358-8289
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fab fa-instagram contact-icon"></i>
+                            <div>
+                                <strong>Instagram:</strong><br>
+                                <a href="https://instagram.com/Aqsasewa_id" style="color: var(--accent-color);" target="_blank">@Aqsasewa_id</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <a href="https://www.google.com/maps/search/?api=1&query=Baranti+Passeno+Pinrang+Rappang" class="btn" target="_blank">Lihat di Google Maps</a>
+                </div>
+                
+                <div class="contact-form" data-aos="fade-left">
+                    <h3>Checkout & Pesan</h3>
+                    <div class="checkout-items" id="checkoutItems">
+                        <!-- Checkout items will be loaded by JavaScript -->
+                    </div>
+                    
+                    <div class="checkout-total">
+                        <span>Total Biaya Sewa:</span>
+                        <span id="totalCost">Rp 0</span>
+                    </div>
+                    
+                    <form id="checkoutForm">
+                        <div class="form-group">
+                            <label for="customerName">Nama Lengkap *</label>
+                            <input type="text" id="customerName" class="form-control" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="customerPhone">Nomor WhatsApp *</label>
+                            <input type="tel" id="customerPhone" class="form-control" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="rentalDate">Tanggal Penyewaan *</label>
+                            <input type="date" id="rentalDate" class="form-control" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="rentalDays">Lama Sewa (hari) *</label>
+                            <input type="number" id="rentalDays" class="form-control" min="1" value="1" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="customerNote">Catatan Tambahan (Opsional)</label>
+                            <textarea id="customerNote" class="form-control" rows="3" placeholder="Misal: Butuh pickup, ada pertanyaan khusus, dll."></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn" style="width: 100%;">Pesan via WhatsApp</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Aqsa Sewa</h4>
+                    <p>Penyewaan alat camping dan outdoor terpercaya dengan peralatan berkualitas dan harga terjangkau.</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Hubungi Kami</h4>
+                    <p><i class="fas fa-phone"></i> 0821-9358-8289</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Baranti, Passeno, Pinrang</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Ikuti Kami</h4>
+                    <div class="social-links">
+                        <a href="https://instagram.com/Aqsasewa_id" class="social-link" target="_blank">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://wa.me/6282193588289" class="social-link" target="_blank">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                        <a href="https://www.facebook.com/" class="social-link" target="_blank">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                &copy; 2023 Aqsa Sewa - Penyewaan Alat Camping. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal for Product Details -->
+    <div class="modal" id="productModal">
+        <div class="modal-content">
+            <span class="close-modal" id="closeModal">&times;</span>
+            <h3 class="modal-title" id="modalProductName">Nama Produk</h3>
+            <div id="modalProductContent">
+                <!-- Product details will be loaded by JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Data produk penyewaan alat camping (individual items)
+        const individualProducts = [
+            { id: 1, name: "Apexel (Lensa Tele/Makro)", price: 12000, image: "gambar/apexel.jpeg", description: "Lensa tambahan untuk smartphone, cocok untuk fotografi makro atau tele.", category: "peralatan" },
+            { id: 2, name: "Gas (Bahan Bakar)", price: 20000, image: "gambar/gas_portabel.jpeg", description: "Tabung gas portable untuk kompor camping, aman dan praktis.", category: "peralatan" },
+            { id: 3, name: "Nesting Set Aluminium", price: 18000, image: "gambar/nesting.jpeg", description: "Set perlengkapan masak nesting 5 pcs (panci, wajan, piring) dari aluminium ringan.", category: "peralatan" },
+            { id: 4, name: "Kompor Portable", price: 13000, image: "gambar/kompor.jpeg", description: "Kompor portable praktis dengan sistem gas kecil, mudah dibawa dan digunakan.", category: "peralatan" },
+            { id: 5, name: "Flysheet", price: 10000, image: "gambar/flysheed.jpeg", description: "Peneduh tambahan untuk tenda, melindungi dari hujan dan terik matahari.", category: "peralatan" },
+            { id: 6, name: "Hammock", price: 8000, image: "gambar/hammock.jpeg", description: "Tempat tidur gantung yang nyaman, cocok untuk bersantai di alam.", category: "peralatan" },
+            { id: 7, name: "Tripod", price: 10000, image: "gambar/tripod.jpeg", description: "Tripod stabil untuk kamera atau smartphone, cocok untuk fotografi.", category: "peralatan" },
+            { id: 8, name: "Matras Aluminium", price: 8000, image: "gambar/matras_alumunium.jpeg", description: "Matras refleksi aluminium untuk insulasi dari tanah dingin.", category: "peralatan" }
+        ];
+
+        // Data produk tenda
+        const tendaProducts = [
+            { id: 9, name: "Tenda Kapasitas 3-4 Orang (Standard)", price: 20000, image: "gambar/tendacamping1.jpeg", description: "Tenda dome untuk 3-4 orang, waterproof dan mudah dipasang.", category: "tenda" },
+            { id: 10, name: "Tenda Kapasitas 3-4 Orang (Premium)", price: 30000, image: "gambar/tendacamping2.jpeg", description: "Tenda premium dengan ventilasi lebih baik dan material berkualitas.", category: "tenda" },
+            { id: 11, name: "Tenda Kapasitas 2-3 Orang", price: 25000, image: "gambar/tendacamping3.jpeg", description: "Tenda compact untuk 2-3 orang, ringan dan mudah dibawa.", category: "tenda" }
+        ];
+
+        // Data produk kursi dan meja
+        const furnitureProducts = [
+            { id: 12, name: "Kursi Lipat Ukuran XL", price: 8000, image: "gambar/kursi_lipatxl.jpeg", description: "Kursi lipat ukuran extra large, nyaman dan kokoh.", category: "kursi-meja" },
+            { id: 13, name: "Kursi Lipat Ukuran XXL", price: 10000, image: "gambar/kursi_lipatxxl.jpeg", description: "Kursi lipat ukuran double extra large, lebih luas dan nyaman.", category: "kursi-meja" },
+            { id: 14, name: "Meja Lipat", price: 10000, image: "gambar/meja_lipat.jpeg", description: "Meja lipat portable, ringan dan mudah dibawa.", category: "kursi-meja" },
+            { id: 15, name: "Kursi Lipat (Standard)", price: 13000, image: "gambar/kursi_lipat.jpeg", description: "Kursi lipat standar dengan desain ergonomis.", category: "kursi-meja" }
+        ];
+
+        // Data paket
+        const packages = {
+            'pendaki-hemat': {
+                name: "Paket Pendaki Hemat",
+                price: 59000,
+                items: [
+                    { name: "Tenda Kapasitas 2-3 Orang", price: 25000, quantity: 1 },
+                    { name: "Matras Aluminium", price: 8000, quantity: 2 },
+                    { name: "Kompor Portable", price: 13000, quantity: 1 },
+                    { name: "Nesting Set Aluminium", price: 18000, quantity: 1 }
+                ]
+            },
+            'ceria-berempat': {
+                name: "Paket Ceria Berempat",
+                price: 105000,
+                items: [
+                    { name: "Tenda Kapasitas 3-4 Orang (Premium)", price: 30000, quantity: 1 },
+                    { name: "Matras Aluminium", price: 8000, quantity: 4 },
+                    { name: "Flysheet", price: 10000, quantity: 1 },
+                    { name: "Kompor Portable", price: 13000, quantity: 1 },
+                    { name: "Nesting Set Aluminium", price: 18000, quantity: 1 },
+                    { name: "Gas (Bahan Bakar)", price: 20000, quantity: 1 }
+                ]
+            },
+            'glamping-chill': {
+                name: "Paket Glamping Chill",
+                price: 75000,
+                items: [
+                    { name: "Tenda Kapasitas 3-4 Orang (Premium)", price: 30000, quantity: 1 },
+                    { name: "Kursi Lipat Ukuran XXL", price: 10000, quantity: 2 },
+                    { name: "Meja Lipat", price: 10000, quantity: 1 },
+                    { name: "Hammock", price: 8000, quantity: 1 },
+                    { name: "Tripod", price: 10000, quantity: 1 },
+                    { name: "Flysheet", price: 10000, quantity: 1 }
+                ]
+            },
+            'konten-kreator': {
+                name: "Paket Konten Kreator",
+                price: 30000,
+                items: [
+                    { name: "Apexel (Lensa Tele/Makro)", price: 12000, quantity: 1 },
+                    { name: "Tripod", price: 10000, quantity: 1 },
+                    { name: "Hammock", price: 8000, quantity: 1 },
+                    { name: "Kursi Lipat Ukuran XL", price: 8000, quantity: 1 }
+                ]
+            }
+        };
+
+        // Cart untuk menyimpan produk yang dipilih
+        let cart = JSON.parse(localStorage.getItem('AqsaSewaCart')) || [];
+        
+        // DOM Elements
+        const productsGrid = document.getElementById('productsGrid');
+        const tendaGrid = document.getElementById('tendaGrid');
+        const furnitureGrid = document.getElementById('furnitureGrid');
+        const checkoutItems = document.getElementById('checkoutItems');
+        const totalCostElement = document.getElementById('totalCost');
+        const checkoutForm = document.getElementById('checkoutForm');
+        const productModal = document.getElementById('productModal');
+        const closeModal = document.getElementById('closeModal');
+        const modalProductName = document.getElementById('modalProductName');
+        const modalProductContent = document.getElementById('modalProductContent');
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const navMenu = document.getElementById('navMenu');
+        const tabs = document.querySelectorAll('.tab');
+        const tabContents = document.querySelectorAll('.tab-content');
+
+        // Initialize page
+        function initPage() {
+            loadProducts();
+            setupTabs();
+            updateCheckout();
+            
+            // Set minimum date to today for rental date
+            const today = new Date().toISOString().split('T')[0];
+            document.getElementById('rentalDate').min = today;
+            document.getElementById('rentalDate').value = today;
+            
+            // Pre-fill customer info placeholders
+            document.getElementById('customerName').placeholder = "Contoh: Ahmad Rizki";
+            document.getElementById('customerPhone').placeholder = "Contoh: 081234567890 atau 6281234567890";
+            
+            // Initialize AOS (Animate On Scroll)
+            AOS.init({
+                duration: 800,
+                once: true
+            });
+        }
+        
+        // Setup tabs
+        function setupTabs() {
+            tabs.forEach(tab => {
+                tab.addEventListener('click', function() {
+                    const tabId = this.getAttribute('data-tab');
+                    
+                    // Remove active class from all tabs and contents
+                    tabs.forEach(t => t.classList.remove('active'));
+                    tabContents.forEach(c => c.classList.remove('active'));
+                    
+                    // Add active class to current tab and content
+                    this.classList.add('active');
+                    document.getElementById(tabId).classList.add('active');
+                });
+            });
+        }
+
+        // Load products to the page
+        function loadProducts() {
+            // Load individual products
+            productsGrid.innerHTML = '';
+            individualProducts.forEach(product => {
+                productsGrid.appendChild(createProductCard(product));
+            });
+            
+            // Load tenda products
+            tendaGrid.innerHTML = '';
+            tendaProducts.forEach(product => {
+                tendaGrid.appendChild(createProductCard(product));
+            });
+            
+            // Load furniture products
+            furnitureGrid.innerHTML = '';
+            furnitureProducts.forEach(product => {
+                furnitureGrid.appendChild(createProductCard(product));
+            });
+        }
+        
+        // Create product card element
+        function createProductCard(product) {
+            const productCard = document.createElement('div');
+            productCard.className = 'product-card';
+            
+            // Check if product is in cart
+            const cartItem = cart.find(item => item.id === product.id && !item.isPackage);
+            const isInCart = cartItem ? true : false;
+            
+            productCard.innerHTML = `
+                <img src="${product.image}" alt="${product.name}" class="product-img">
+                <div class="product-info">
+                    <h3 class="product-name">${product.name}</h3>
+                    <p class="product-price">Rp ${product.price.toLocaleString('id-ID')} <span>/hari</span></p>
+                    <p class="product-desc">${product.description}</p>
+                    <div class="product-actions">
+                        <button class="btn btn-small view-details" data-id="${product.id}">Detail</button>
+                        ${isInCart ? 
+                            `<button class="btn btn-small remove-from-cart" data-id="${product.id}">Hapus</button>` : 
+                            `<button class="btn btn-small add-to-cart" data-id="${product.id}">Sewa</button>`
+                        }
+                    </div>
+                </div>
+            `;
+            
+            // Add event listeners
+            const addButton = productCard.querySelector('.add-to-cart');
+            const removeButton = productCard.querySelector('.remove-from-cart');
+            const detailButton = productCard.querySelector('.view-details');
+            
+            if (addButton) {
+                addButton.addEventListener('click', function() {
+                    const productId = parseInt(this.getAttribute('data-id'));
+                    addToCart(productId);
+                });
+            }
+            
+            if (removeButton) {
+                removeButton.addEventListener('click', function() {
+                    const productId = parseInt(this.getAttribute('data-id'));
+                    removeFromCart(productId);
+                });
+            }
+            
+            if (detailButton) {
+                detailButton.addEventListener('click', function() {
+                    const productId = parseInt(this.getAttribute('data-id'));
+                    showProductDetails(productId);
+                });
+            }
+            
+            return productCard;
+        }
+        
+        // Add product to cart
+        function addToCart(productId) {
+            // Find product in all product arrays
+            let product = individualProducts.find(p => p.id === productId);
+            if (!product) product = tendaProducts.find(p => p.id === productId);
+            if (!product) product = furnitureProducts.find(p => p.id === productId);
+            
+            if (!product) return;
+            
+            const existingItem = cart.find(item => item.id === productId && !item.isPackage);
+            
+            if (!existingItem) {
+                cart.push({
+                    id: product.id,
+                    name: product.name,
+                    price: product.price,
+                    quantity: 1,
+                    isPackage: false
+                });
+                
+                localStorage.setItem('AqsaSewaCart', JSON.stringify(cart));
+                loadProducts();
+                updateCheckout();
+                
+                // Show notification
+                showNotification(`${product.name} telah ditambahkan ke keranjang!`);
+            }
+        }
+        
+        // Add package to cart
+        function addPackageToCart(packageId) {
+            const packageData = packages[packageId];
+            
+            // Check if package already in cart
+            const existingPackage = cart.find(item => item.packageId === packageId);
+            if (existingPackage) {
+                showNotification('Paket ini sudah ada di keranjang!');
+                return;
+            }
+            
+            // Add package to cart
+            cart.push({
+                packageId: packageId,
+                name: packageData.name,
+                price: packageData.price,
+                quantity: 1,
+                isPackage: true,
+                items: packageData.items
+            });
+            
+            localStorage.setItem('AqsaSewaCart', JSON.stringify(cart));
+            updateCheckout();
+            
+            // Show notification
+            showNotification(`${packageData.name} telah ditambahkan ke keranjang!`);
+        }
+        
+        // Remove product from cart
+        function removeFromCart(productId) {
+            cart = cart.filter(item => !(item.id === productId && !item.isPackage));
+            localStorage.setItem('AqsaSewaCart', JSON.stringify(cart));
+            loadProducts();
+            updateCheckout();
+        }
+        
+        // Remove package from cart
+        function removePackageFromCart(packageId) {
+            cart = cart.filter(item => item.packageId !== packageId);
+            localStorage.setItem('AqsaSewaCart', JSON.stringify(cart));
+            updateCheckout();
+        }
+        
+        // Update quantity in cart
+        function updateQuantity(itemIndex, newQuantity) {
+            if (itemIndex >= 0 && itemIndex < cart.length) {
+                cart[itemIndex].quantity = newQuantity;
+                localStorage.setItem('AqsaSewaCart', JSON.stringify(cart));
+                updateCheckout();
+            }
+        }
+        
+        // Update checkout display
+        function updateCheckout() {
+            checkoutItems.innerHTML = '';
+            
+            if (cart.length === 0) {
+                checkoutItems.innerHTML = '<p style="text-align: center; color: #94a3b8;">Keranjang sewa kosong. Silakan tambahkan produk atau paket.</p>';
+                totalCostElement.textContent = 'Rp 0';
+                return;
+            }
+            
+            let total = 0;
+            
+            cart.forEach((item, index) => {
+                const itemTotal = item.price * item.quantity;
+                total += itemTotal;
+                
+                const checkoutItem = document.createElement('div');
+                checkoutItem.className = 'checkout-item';
+                
+                if (item.isPackage) {
+                    checkoutItem.innerHTML = `
+                        <div>
+                            <strong>${item.name} (Paket)</strong><br>
+                            <small>Rp ${item.price.toLocaleString('id-ID')} /hari</small>
+                        </div>
+                        <div>
+                            <input type="number" min="1" value="${item.quantity}" class="quantity-input" data-index="${index}" style="width: 60px; padding: 5px; text-align: center;">
+                            <br>
+                            <small>Rp ${itemTotal.toLocaleString('id-ID')}</small>
+                            <br>
+                            <button class="btn btn-small remove-package" data-package="${item.packageId}" style="margin-top: 5px; padding: 3px 8px; font-size: 0.8rem;">Hapus</button>
+                        </div>
+                    `;
+                } else {
+                    checkoutItem.innerHTML = `
+                        <div>
+                            <strong>${item.name}</strong><br>
+                            <small>Rp ${item.price.toLocaleString('id-ID')} /hari</small>
+                        </div>
+                        <div>
+                            <input type="number" min="1" value="${item.quantity}" class="quantity-input" data-index="${index}" style="width: 60px; padding: 5px; text-align: center;">
+                            <br>
+                            <small>Rp ${itemTotal.toLocaleString('id-ID')}</small>
+                        </div>
+                    `;
+                }
+                
+                checkoutItems.appendChild(checkoutItem);
+            });
+            
+            // Add event listeners to quantity inputs
+            document.querySelectorAll('.quantity-input').forEach(input => {
+                input.addEventListener('change', function() {
+                    const itemIndex = parseInt(this.getAttribute('data-index'));
+                    const newQuantity = parseInt(this.value);
+                    updateQuantity(itemIndex, newQuantity);
+                });
+            });
+            
+            // Add event listeners to remove package buttons
+            document.querySelectorAll('.remove-package').forEach(button => {
+                button.addEventListener('click', function() {
+                    const packageId = this.getAttribute('data-package');
+                    removePackageFromCart(packageId);
+                });
+            });
+            
+            totalCostElement.textContent = `Rp ${total.toLocaleString('id-ID')}`;
+        }
+        
+        // Show product details in modal
+        function showProductDetails(productId) {
+            // Find product in all product arrays
+            let product = individualProducts.find(p => p.id === productId);
+            if (!product) product = tendaProducts.find(p => p.id === productId);
+            if (!product) product = furnitureProducts.find(p => p.id === productId);
+            
+            if (!product) return;
+            
+            modalProductName.textContent = product.name;
+            modalProductContent.innerHTML = `
+                <img src="${product.image}" alt="${product.name}" style="width: 100%; border-radius: var(--border-radius); margin-bottom: 1.5rem;">
+                <p><strong>Harga Sewa:</strong> Rp ${product.price.toLocaleString('id-ID')} /hari</p>
+                <p><strong>Deskripsi:</strong> ${product.description}</p>
+                <p><strong>Kondisi:</strong> Bersih, siap pakai, dan terawat dengan baik.</p>
+                <p><strong>Minimal Sewa:</strong> 1 hari</p>
+                <div style="margin-top: 2rem;">
+                    <button class="btn" id="addFromModal" data-id="${product.id}" style="margin-right: 10px;">Tambah ke Penyewaan</button>
+                    <button class="btn btn-secondary" id="closeModalBtn">Tutup</button>
+                </div>
+            `;
+            
+            productModal.style.display = 'flex';
+            
+            // Add event listeners for modal buttons
+            document.getElementById('addFromModal').addEventListener('click', function() {
+                const productId = parseInt(this.getAttribute('data-id'));
+                addToCart(productId);
+                productModal.style.display = 'none';
+            });
+            
+            document.getElementById('closeModalBtn').addEventListener('click', function() {
+                productModal.style.display = 'none';
+            });
+        }
+        
+        // Handle checkout form submission
+        checkoutForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            if (cart.length === 0) {
+                showNotification('Silakan tambahkan produk terlebih dahulu sebelum checkout.');
+                return;
+            }
+            
+            const customerName = document.getElementById('customerName').value;
+            const customerPhone = document.getElementById('customerPhone').value;
+            const rentalDate = document.getElementById('rentalDate').value;
+            const rentalDays = document.getElementById('rentalDays').value;
+            const customerNote = document.getElementById('customerNote').value;
+            
+            // Validate phone number
+            if (!customerPhone.startsWith('0') && !customerPhone.startsWith('62')) {
+                showNotification('Nomor WhatsApp harus dimulai dengan 0 atau 62');
+                return;
+            }
+            
+            // Format phone number for WhatsApp
+            let formattedPhone = customerPhone;
+            if (formattedPhone.startsWith('0')) {
+                formattedPhone = '62' + formattedPhone.substring(1);
+            }
+            
+            // Format date
+            const formattedDate = new Date(rentalDate).toLocaleDateString('id-ID', {
+                weekday: 'long',
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            });
+            
+            // Calculate total cost
+            let total = 0;
+            let orderDetails = '';
+            
+            cart.forEach(item => {
+                const itemTotal = item.price * item.quantity * rentalDays;
+                total += itemTotal;
+                
+                if (item.isPackage) {
+                    orderDetails += `📦 *${item.name}* (${item.quantity} paket)\n`;
+                    orderDetails += `   Harga: Rp ${(item.price * item.quantity).toLocaleString('id-ID')}/hari\n`;
+                    
+                    // Add package items details
+                    if (item.items) {
+                        item.items.forEach(packageItem => {
+                            orderDetails += `   - ${packageItem.name} (${packageItem.quantity} unit)\n`;
+                        });
+                    }
+                    orderDetails += '\n';
+                } else {
+                    orderDetails += `• ${item.name} (${item.quantity} unit) : Rp ${(item.price * item.quantity).toLocaleString('id-ID')}/hari\n`;
+                }
+            });
+            
+            // Create WhatsApp message
+            const message = `*PESANAN PENYEWAAN ALAT CAMPING - Aqsa SEWA*
+
+*DATA PENYEWA:*
+👤 Nama: ${customerName}
+📱 No. WhatsApp: ${customerPhone}
+📅 Tanggal Sewa: ${formattedDate}
+⏱️ Lama Sewa: ${rentalDays} hari
+
+*DETAIL PENYEWAAN:*
+ ${orderDetails}
+*💰 TOTAL BIAYA SEWA: Rp ${total.toLocaleString('id-ID')}*
+
+ ${customerNote ? `*CATATAN:*\n${customerNote}\n\n` : ''}
+_Saya telah membaca dan menyetujui syarat & ketentuan penyewaan Aqsa Sewa. Silakan konfirmasi ketersediaan dan cara pembayaran. Terima kasih._`;
+            
+            // Create WhatsApp URL with formatted phone number
+            const whatsappURL = `https://wa.me/6282193588289?text=${encodeURIComponent(message)}`;
+            
+            // Open WhatsApp in new tab
+            window.open(whatsappURL, '_blank');
+            
+            // Show success message
+            showNotification('Terima kasih! Anda akan diarahkan ke WhatsApp untuk menyelesaikan pemesanan.');
+            
+            // Optional: Clear cart after order
+            // Uncomment the lines below if you want to clear cart after order
+            /*
+            cart = [];
+            localStorage.setItem('AqsaSewaCart', JSON.stringify(cart));
+            loadProducts();
+            updateCheckout();
+            checkoutForm.reset();
+            */
+        });
+        
+        // Close modal when clicking X
+        closeModal.addEventListener('click', function() {
+            productModal.style.display = 'none';
+        });
+        
+        // Close modal when clicking outside
+        window.addEventListener('click', function(e) {
+            if (e.target === productModal) {
+                productModal.style.display = 'none';
+            }
+        });
+        
+        // Mobile menu toggle
+        mobileMenuBtn.addEventListener('click', function() {
+            navMenu.classList.toggle('active');
+        });
+        
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', function() {
+                navMenu.classList.remove('active');
+            });
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Show notification function
+        function showNotification(message) {
+            // Create notification element
+            const notification = document.createElement('div');
+            notification.className = 'notification';
+            notification.textContent = message;
+            notification.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                background-color: var(--primary-color);
+                color: white;
+                padding: 15px 25px;
+                border-radius: var(--border-radius);
+                box-shadow: var(--box-shadow);
+                z-index: 1000;
+                transform: translateX(100%);
+                transition: transform 0.3s ease;
+            `;
+            
+            // Add to body
+            document.body.appendChild(notification);
+            
+            // Show notification
+            setTimeout(() => {
+                notification.style.transform = 'translateX(0)';
+            }, 100);
+            
+            // Hide notification after 3 seconds
+            setTimeout(() => {
+                notification.style.transform = 'translateX(100%)';
+                setTimeout(() => {
+                    document.body.removeChild(notification);
+                }, 300);
+            }, 3000);
+        }
+        
+        // Initialize the page
+        initPage();
+    </script>
+</body>
+</html>
